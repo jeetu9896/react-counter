@@ -9,11 +9,11 @@ const Counter = () => {
   const handleReset = useCallback(() => setCount(0), []);
 
   return (
-    <div>
+    <div className="w-full text-center">
       <h1 className="text-3xl font-bold">
         Count: <span>{count}</span>
       </h1>
-      <div className="flex justify-between m-8">
+      <div className="flex justify-around m-8">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
           onClick={() => handleCounter(1)}
