@@ -22,8 +22,30 @@ test("check Inc, Dec and Reset Button", () => {
   expect(countText()).toHaveTextContent("Count: 1");
 
   fireEvent.click(decButton);
-  expect(countText()).toHaveTextContent('Count: 0');
+  expect(countText()).toHaveTextContent("Count: 0");
 
   fireEvent.click(resetButton);
-  expect(countText()).toHaveTextContent('Count: 0');
+  expect(countText()).toHaveTextContent("Count: 0");
+});
+
+test("decrement and reset button disabled", () => {
+  render(<CounterNew />);
+
+  const decrementBtn = screen.getByText("-");
+  const resetBtn = screen.getByText("reset");
+
+  expect(decrementBtn).toBeDisabled();
+  expect(resetBtn).toBeDisabled();
+});
+
+test("decrement and reset button enabled", () => {
+  render(<CounterNew />);
+
+  const incrementBtn = screen.getByText("+");
+  const decrementBtn = screen.getByText("-");
+  const resetBtn = screen.getByText("reset");
+
+  fireEvent.click(incrementBtn);
+  expect(decrementBtn).toBeEnabled();
+  expect(resetBtn).toBeEnabled();
 });
