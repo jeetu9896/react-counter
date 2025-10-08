@@ -49,3 +49,40 @@ test("decrement and reset button enabled", () => {
   expect(decrementBtn).toBeEnabled();
   expect(resetBtn).toBeEnabled();
 });
+
+test("initial State is 0", () => {
+  render(<CounterNew />);
+  expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 0");
+});
+
+test("reset button enable", async () => {
+  render(<CounterNew />);
+
+  const incBtn = screen.getByText("+");
+  const resetBtn = screen.getByText("reset");
+
+  await fireEvent.click(incBtn);
+  await fireEvent.click(resetBtn);
+
+  expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 0");
+});
+
+test("multiple increment and decrement", async () => {
+  render(<CounterNew />);
+  const incBtn = screen.getByText("+");
+  const decBtn = screen.getByText("-");
+
+  await fireEvent.click(incBtn);
+  await fireEvent.click(incBtn);
+  await fireEvent.click(incBtn);
+  await fireEvent.click(incBtn);
+
+  expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 4");
+
+  await fireEvent.click(decBtn);
+  await fireEvent.click(decBtn);
+  await fireEvent.click(decBtn);
+
+  expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 1");
+});
+
