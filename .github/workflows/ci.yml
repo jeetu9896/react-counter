@@ -23,7 +23,7 @@ jobs:
       run: npm ci
 
     - name: Run Vitest tests
-      run: npm run test -- --coverage
+      run: npm run test
 
     - name: Build Vite app
       run: npm run build
