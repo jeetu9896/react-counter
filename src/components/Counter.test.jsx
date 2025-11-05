@@ -58,8 +58,8 @@ test("reset button enable", async () => {
   const incBtn = screen.getByText("+");
   const resetBtn = screen.getByText("Reset");
 
-  await fireEvent.click(incBtn);
-  await fireEvent.click(resetBtn);
+  fireEvent.click(incBtn);
+  fireEvent.click(resetBtn);
 
   expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 0");
 });
@@ -69,16 +69,16 @@ test("multiple increment and decrement", async () => {
   const incBtn = screen.getByText("+");
   const decBtn = screen.getByText("-");
 
-  await fireEvent.click(incBtn);
-  await fireEvent.click(incBtn);
-  await fireEvent.click(incBtn);
-  await fireEvent.click(incBtn);
+  fireEvent.click(incBtn);
+  fireEvent.click(incBtn);
+  fireEvent.click(incBtn);
+  fireEvent.click(incBtn);
 
   expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 4");
 
-  await fireEvent.click(decBtn);
-  await fireEvent.click(decBtn);
-  await fireEvent.click(decBtn);
+  fireEvent.click(decBtn);
+  fireEvent.click(decBtn);
+  fireEvent.click(decBtn);
 
   expect(screen.getByText(/Count:/)).toHaveTextContent("Count: 1");
 });
