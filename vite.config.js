@@ -15,9 +15,10 @@ export default defineConfig({
     tailwindcss(),
   ],
   test: {
+    include: ['src/**/*.test.{js,jsx,ts,tsx}'],
     environment: 'jsdom',
     globals: true,
-    setupFiles: './src/setupTests.js',
+    // setupFiles: './src/setupTests.js',
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
